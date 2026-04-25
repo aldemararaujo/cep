@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEP UNCISAL — Comitê de Ética em Pesquisa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1c20;
+      --ink-soft:  #5a5e68;
+      --bg:        #f7f6f2;
+      --bg-card:   #ffffff;
+      --rule:      #e2e0da;
+      --gold:      #b8924a;
+      --gold-lt:   #e8d9bf;
+      --teal:      #1d4a4a;
+      --teal-lt:   #e6efef;
+      --serif:     'Lora', Georgia, serif;
+      --sans:      'Source Sans 3', system-ui, sans-serif;
+      --radius:    10px;
+      --shadow:    0 2px 20px rgba(26,28,32,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16.5px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--teal);
+      color: #fff;
+      padding: 0 clamp(1.25rem, 5vw, 4rem);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .logo-badge {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-badge svg { width: 18px; height: 18px; }
+
+    .logo-text {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      line-height: 1.1;
+    }
+
+    .logo-sub {
+      font-family: var(--sans);
+      font-size: .65rem;
+      font-weight: 300;
+      opacity: .65;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    nav { display: flex; gap: 1.75rem; }
+
+    nav a {
+      color: rgba(255,255,255,.72);
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--gold-lt); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: rgba(255,255,255,.8);
+      transition: all .3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      background: var(--teal);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 1.25rem clamp(1.25rem,5vw,4rem);
+      z-index: 99;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .9rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      padding: .4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--teal);
+      color: #fff;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 340px; height: 340px;
+      border: 1px solid rgba(184,146,74,.18);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: 60px;
+      width: 200px; height: 200px;
+      border: 1px solid rgba(184,146,74,.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 1rem;
+      opacity: .85;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .hero p {
+      font-size: clamp(.9rem, 2.2vw, 1.05rem);
+      font-weight: 300;
+      opacity: .75;
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .7rem 1.5rem;
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all .22s;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #a67e3e; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.28);
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,.08); }
+
+    /* ── STATS STRIP ── */
+    .stats {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item {
+      padding: 1.75rem clamp(1rem, 3vw, 2.5rem);
+      text-align: center;
+      border-right: 1px solid var(--rule);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-soft);
+      margin-top: .3rem;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: clamp(3rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 4rem);
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-tag {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .6rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .section-lead {
+      font-size: .95rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      margin-top: .75rem;
+      line-height: 1.8;
+    }
+
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    /* ── TABS ── */
+    .tabs-wrapper {
+      background: var(--bg);
+    }
+
+    .tabs-nav {
+      display: flex;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg-card);
+      padding: 0 clamp(1.25rem, 5vw, 4rem);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      padding: 1.1rem 1.5rem;
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .22s;
+      margin-bottom: -1px;
+    }
+
+    .tab-btn:hover { color: var(--ink); }
+
+    .tab-btn.active {
+      color: var(--teal);
+      border-bottom-color: var(--gold);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: box-shadow .22s, transform .22s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--teal-lt);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-icon svg { width: 20px; height: 20px; color: var(--teal); }
+
+    .card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: .875rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      margin-top: 1rem;
+      letter-spacing: .03em;
+      transition: gap .2s;
+    }
+
+    .card-link:hover { gap: .5rem; }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+
+    .step h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+
+    .step p { font-size: .875rem; color: var(--ink-soft); line-height: 1.75; }
+
+    /* ── DIREITOS STRIP ── */
+    .rights-strip {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .right-item {
+      background: var(--teal);
+      padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+    }
+
+    .right-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: .75rem;
+      opacity: .6;
+    }
+
+    .right-item h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: .4rem;
+      color: var(--gold-lt);
+    }
+
+    .right-item p { font-size: .8rem; opacity: .65; line-height: 1.7; }
+
+    /* ── ACCORDION ── */
+    .accordion { display: flex; flex-direction: column; gap: .5rem; }
+
+    .acc-item {
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .acc-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--sans);
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 1rem;
+      transition: background .18s;
+    }
+
+    .acc-btn:hover { background: #fafaf7; }
+
+    .acc-btn.open { color: var(--teal); }
+
+    .acc-arrow {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      transition: transform .25s;
+    }
+
+    .acc-btn.open .acc-arrow { transform: rotate(180deg); }
+
+    .acc-body {
+      display: none;
+      padding: 0 1.5rem 1.25rem;
+      font-size: .875rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      border-top: 1px solid var(--rule);
+      padding-top: 1rem;
+    }
+
+    .acc-body.open { display: block; }
+
+    /* ── CONTATO ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .contact-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-row {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      margin-bottom: .85rem;
+    }
+
+    .contact-row svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+
+    .contact-label {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: block;
+    }
+
+    .contact-value {
+      font-size: .875rem;
+      color: var(--ink);
+    }
+
+    .alert-box {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.25rem;
+      font-size: .85rem;
+      color: var(--teal);
+      line-height: 1.7;
+      grid-column: 1 / -1;
+    }
+
+    /* ── FOOTER ── */
+    .footer-social {
+      background: var(--teal);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 1.25rem clamp(1.25rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      transition: all .22s;
+      position: relative;
+    }
+
+    .social-link:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .social-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Tooltip */
+    .social-link::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: rgba(255,255,255,.85);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      padding: .3rem .65rem;
+      border-radius: 4px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .18s;
+    }
+
+    .social-link:hover::after { opacity: 1; }
+
+    .social-link.instagram:hover { background: rgba(225,48,108,.28); border-color: rgba(225,48,108,.45); }
+    .social-link.whatsapp:hover  { background: rgba(37,211,102,.22); border-color: rgba(37,211,102,.45); }
+    .social-link.email:hover     { background: rgba(184,146,74,.28); border-color: rgba(184,146,74,.45); }
+    .social-link.site:hover      { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+    .social-link.plataforma:hover { background: rgba(100,160,220,.22); border-color: rgba(100,160,220,.4); }
+
+    .social-divider {
+      width: 1px;
+      height: 22px;
+      background: rgba(255,255,255,.13);
+      margin: 0 .15rem;
+    }
+
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.4);
+      padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer p { font-size: .75rem; line-height: 1.65; }
+
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+
+    .footer-badge {
+      font-family: var(--serif);
+      font-size: .85rem;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .1em;
+    }
+
+    @media (max-width: 480px) {
+      .social-divider { display: none; }
+      .footer-social { gap: .5rem; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .stats { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--rule); }
+      .stat-item:last-child { border-bottom: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .tab-btn { padding: 1rem 1rem; font-size: .75rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta { flex-direction: column; }
+      .btn { justify-content: center; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── PATHWAY SUB-NAV ── */
+    .pathway-nav {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .path-btn {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .7rem 1.25rem;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      background: var(--bg);
+      border: 1.5px solid var(--rule);
+      cursor: pointer;
+      transition: all .22s;
+      text-align: left;
+    }
+
+    .path-btn:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: var(--teal-lt);
+    }
+
+    .path-btn.active {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+
+    .path-btn .path-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .68rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .path-btn:not(.active) .path-num {
+      background: var(--rule);
+      color: var(--ink-soft);
+    }
+
+    .pathway-panel { display: none; }
+    .pathway-panel.active { display: block; }
+
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .req-card {
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .req-card.required { border-left: 3px solid var(--teal); }
+    .req-card.optional  { border-left: 3px solid var(--gold); }
+
+    .req-badge {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      margin-bottom: .75rem;
+    }
+
+    .req-badge.obrigatorio { background: var(--teal-lt); color: var(--teal); }
+    .req-badge.complementar { background: #fef3dc; color: #8a6020; }
+
+    .req-card h4 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+    }
+
+    .req-card p { font-size: .82rem; color: var(--ink-soft); line-height: 1.72; }
+
+    .path-notice {
+      background: var(--teal-lt);
+      border: 1px solid rgba(29,74,74,.15);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem;
+      font-size: .85rem;
+      color: var(--teal);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .path-notice strong { font-weight: 600; }
+
+    .parecer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .parecer-card {
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+    }
+
+    .parecer-card.aprovado   { background: #edf7f0; border-color: #a3d4b0; }
+    .parecer-card.pendente   { background: #fef9ec; border-color: #e8d080; }
+    .parecer-card.nao-aprovado { background: #fdf0f0; border-color: #e0a8a8; }
+    .parecer-card.retirado   { background: #f4f4f8; border-color: #c5c5d8; }
+
+    .parecer-label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+      display: block;
+    }
+
+    .aprovado .parecer-label   { color: #2a7a47; }
+    .pendente .parecer-label   { color: #8a6d0a; }
+    .nao-aprovado .parecer-label { color: #8a2a2a; }
+    .retirado .parecer-label   { color: #5a5a7a; }
+
+    .parecer-card h4 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+    }
+
+    .contact-value a,
+    .alert-box a,
+    .acc-body a,
+    .path-notice a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(0,0,0,.25);
+      text-underline-offset: 2px;
+      transition: text-decoration-color .18s, opacity .18s;
+    }
+
+    .contact-value a:hover,
+    .alert-box a:hover,
+    .acc-body a:hover,
+    .path-notice a:hover { text-decoration-color: currentColor; opacity: .8; }
+
+    .canal-num-link {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color .18s;
+    }
+
+    .canal-num-link:hover { text-decoration-color: rgba(255,255,255,.8); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b8924a" stroke-width="1.5">
+        <path d="M12 2L3 7l9 5 9-5-9-5z"/>
+        <path d="M3 12l9 5 9-5M3 17l9 5 9-5"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-text">CEP</span>
+      <span class="logo-sub">CEP · UNCISAL · Maceió/AL</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#pesquisadores">Pesquisadores</a>
+    <a href="#participantes">Participantes</a>
+    <a href="#faq">FAQ</a>
+    <a href="#sobre">Sobre o CEP</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#pesquisadores" onclick="closeMobile()">Pesquisadores</a>
+  <a href="#participantes" onclick="closeMobile()">Participantes</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#sobre" onclick="closeMobile()">Sobre o CEP</a>
+  <a href="#contato" onclick="closeMobile()">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Ética na pesquisa é <em>respeito à vida</em> humana</h1>
+  <p>O Comitê de Ética em Pesquisa (CEP) assegura a proteção dos direitos, a dignidade e o bem-estar de todos os participantes de pesquisa envolvendo seres humanos.</p>
+  <div class="hero-cta">
+    <a href="#pesquisadores" class="btn btn-primary">Sou Pesquisador</a>
+    <a href="#participantes" class="btn btn-outline">Sou Participante</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item reveal">
+    <span class="stat-num" style="font-size:1.6rem;">30 dias úteis</span>
+    <span class="stat-label">Prazo máximo para a análise dos protocolos</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num" style="font-size:1.6rem;">10 dias úteis</span>
+    <span class="stat-label">Prazo máximo de resposta do pesquisador</span>
+  </div>
+</div>
+
+<hr class="section-rule" />
+
+<!-- TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="pesquisadores" id="tab-pesquisadores">
+      Pesquisadores
+    </button>
+    <button class="tab-btn" data-tab="participantes" id="tab-participantes">
+      Participantes de Pesquisa
+    </button>
+  </div>
+
+  <!-- PESQUISADORES -->
+  <div class="tab-panel active" id="panel-pesquisadores">
+    <section class="section" id="pesquisadores">
+      <div class="section-header reveal">
+        <span class="section-tag">Para pesquisadores</span>
+        <h2 class="section-title">Qual é o seu caminho?</h2>
+        <p class="section-lead">Selecione abaixo a situação que corresponde à sua demanda. Cada modalidade possui requisitos documentais e fluxos distintos junto ao CEP da UNCISAL.</p>
+      </div>
+
+      <!-- PATHWAY NAV -->
+      <div class="pathway-nav reveal">
+        <button class="path-btn active" data-path="projeto">
+          <span class="path-num">1a</span>
+          Submeter Projeto de Pesquisa
+        </button>
+        <button class="path-btn" data-path="relato">
+          <span class="path-num">1b</span>
+          Submeter Relato de Caso
+        </button>
+        <button class="path-btn" data-path="parecer">
+          <span class="path-num">2</span>
+          Responder ao Parecer Consubstanciado
+        </button>
+      </div>
+
+      <!-- ── CAMINHO 1A: PROJETO DE PESQUISA ── -->
+      <div class="pathway-panel active" id="path-projeto">
+
+        <div class="path-notice">
+          <strong>Projeto de pesquisa</strong> — modalidade aplicável a estudos com delineamento prospectivo ou retrospectivo, envolvendo coleta sistemática de dados, experimentos, intervenções ou análise de prontuários. Toda submissão ocorre exclusivamente pela <a href="https://plataformabrasil.saude.gov.br" target="_blank">Plataforma Brasil</a>. Os documentos abaixo correspondem aos mínimos obrigatórios para iniciar a tramitação no CEP da UNCISAL, conforme atualização de 26/10/2024.
+        </div>
+
+        <div class="section-header" style="margin-bottom:1.5rem;">
+          <span class="section-tag">Documentos mínimos obrigatórios</span>
+          <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:400;">9 documentos exigidos pelo CEP da UNCISAL</h3>
+        </div>
+
+        <!-- TABELA RESUMO -->
+        <div class="reveal" style="overflow-x:auto; margin-bottom:2rem;">
+          <table style="width:100%; border-collapse:collapse; font-size:.83rem; background:var(--bg-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--rule);">
+            <thead>
+              <tr style="background:var(--teal); color:#fff;">
+                <th style="padding:.7rem 1rem; text-align:left; font-weight:500; letter-spacing:.04em; width:2rem;">#</th>
+                <th style="padding:.7rem 1rem; text-align:left; font-weight:500; letter-spacing:.04em;">Documento</th>
+                <th style="padding:.7rem 1rem; text-align:center; font-weight:500; letter-spacing:.04em; white-space:nowrap;">Formato</th>
+                <th style="padding:.7rem 1rem; text-align:center; font-weight:500; letter-spacing:.04em;">Status</th>
+                <th style="padding:.7rem 1rem; text-align:center; font-weight:500; letter-spacing:.04em;">Modelo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--rule);">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">1</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Folha de Rosto</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft); font-size:.75rem;">Gerada pela Plataforma Brasil</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule); background:#fafaf8;">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">2</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Projeto de Pesquisa Detalhado</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center;"><a href="https://cep.uncisal.edu.br/orientacoes-para-elaboracao-de-protocolo-de-pesquisa/" target="_blank" style="color:var(--teal); font-size:.75rem; text-decoration:underline;">Roteiro →</a></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule);">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">3</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Instrumentos de Pesquisa</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft); font-size:.75rem;">—</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule); background:#fafaf8;">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">4</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">TCLE — Termo de Consentimento Livre e Esclarecido</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center;"><a href="https://cep.uncisal.edu.br/wp-content/uploads/2022/04/Termo-de-Consentimento-Livre-e-Esclarecido-TCLE-Atualizado-2022.docx" target="_blank" style="color:var(--teal); font-size:.75rem; text-decoration:underline;">Baixar 2022 →</a></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule);">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">5</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Declaração de Isenção de Conflito de Interesses</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center;"><a href="https://cep.uncisal.edu.br/wp-content/uploads/2020/03/Declaração-de-Isenção-de-conflito-de-Interesses-atualizada.docx" target="_blank" style="color:var(--teal); font-size:.75rem; text-decoration:underline;">Baixar →</a></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule); background:#fafaf8;">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">6</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Termo de Responsabilidade e Compromisso dos Pesquisadores</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center;"><a href="https://cep.uncisal.edu.br/wp-content/uploads/2020/03/Termo-de-responsabilidade-e-compromisso-do-pesquisador-atualizado.docx" target="_blank" style="color:var(--teal); font-size:.75rem; text-decoration:underline;">Baixar →</a></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule);">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">7</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Autorização para Realização da Pesquisa</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:var(--teal-lt); color:var(--teal); font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Obrigatório</span></td>
+                <td style="padding:.65rem 1rem; text-align:center;"><a href="https://cep.uncisal.edu.br/wp-content/uploads/2020/03/Modelo-de-Autorização-para-realização-de-Pesquisa-atualizada.docx" target="_blank" style="color:var(--teal); font-size:.75rem; text-decoration:underline;">Baixar →</a></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--rule); background:#fafaf8;">
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">8</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">TALE — Termo de Assentimento Livre e Esclarecido</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:#fef3dc; color:#8a6020; font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Se aplicável</span></td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft); font-size:.75rem;">Modelo indisponível</td>
+              </tr>
+              <tr>
+                <td style="padding:.65rem 1rem; color:var(--ink-soft); font-weight:600;">9</td>
+                <td style="padding:.65rem 1rem; color:var(--ink); font-weight:500;">Autorização para Uso de Imagem e Voz</td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft);">PDF</td>
+                <td style="padding:.65rem 1rem; text-align:center;"><span style="background:#fef3dc; color:#8a6020; font-size:.65rem; font-weight:700; letter-spacing:.07em; padding:.2rem .55rem; border-radius:4px; text-transform:uppercase;">Se aplicável</span></td>
+                <td style="padding:.65rem 1rem; text-align:center; color:var(--ink-soft); font-size:.75rem;">Modelo indisponível</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="req-grid reveal">
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">1 · Obrigatório · PDF</span>
+            <h4>Folha de Rosto</h4>
+            <p>Gerada automaticamente pela Plataforma Brasil. Deve ser enviada em PDF, preenchida corretamente e assinada obrigatoriamente pelo <strong>pesquisador principal</strong> e pela <strong>Pró-Reitora de Pesquisa e Pós-Graduação da UNCISAL</strong>.</p>
+            <p style="margin-top:.5rem; font-size:.78rem; color:#c04040;">⚠ Folhas incompletas ou sem assinaturas serão recusadas.</p>
+          </div>
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">2 · Obrigatório · PDF</span>
+            <h4>Projeto de Pesquisa Detalhado</h4>
+            <p>Deve conter todos os elementos do protocolo. Enviar em PDF. Utilize o roteiro orientativo disponível no site do CEP para garantir que todos os itens exigidos estejam contemplados.</p>
+            <a href="https://cep.uncisal.edu.br/orientacoes-para-elaboracao-de-protocolo-de-pesquisa/" target="_blank" class="card-link">Roteiro orientativo →</a>
+          </div>
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">3 · Obrigatório · PDF</span>
+            <h4>Instrumentos de Pesquisa</h4>
+            <p>Devem ser enviados em PDF e inseridos separadamente. Incluem questionários, formulários, roteiros de entrevista, perguntas norteadoras e protocolos de observação utilizados na coleta de dados.</p>
+          </div>
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">4 · Obrigatório · PDF</span>
+            <h4>Termo de Consentimento Livre e Esclarecido — TCLE</h4>
+            <p>Documento que assegura a participação consciente e voluntária. Elaborar conforme o modelo atualizado (2022) disponibilizado pelo CEP da UNCISAL. Enviar em PDF.</p>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2022/04/Termo-de-Consentimento-Livre-e-Esclarecido-TCLE-Atualizado-2022.docx" target="_blank" class="card-link">Baixar modelo 2022 →</a>
+          </div>
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">5 · Obrigatório · PDF</span>
+            <h4>Declaração de Isenção de Conflito de Interesses</h4>
+            <p>Assinatura de <strong>todos os pesquisadores</strong> envolvidos é obrigatória. Enviar em PDF com todas as assinaturas completas.</p>
+            <p style="margin-top:.5rem; font-size:.78rem; color:#c04040;">⚠ Sem assinaturas completas, será recusada.</p>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2020/03/Declaração-de-Isenção-de-conflito-de-Interesses-atualizada.docx" target="_blank" class="card-link">Baixar modelo atualizado →</a>
+          </div>
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">6 · Obrigatório · PDF</span>
+            <h4>Termo de Responsabilidade e Compromisso dos Pesquisadores</h4>
+            <p>Documento ético que formaliza o compromisso de toda a equipe de pesquisa. Enviar em PDF com todas as assinaturas.</p>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2020/03/Termo-de-responsabilidade-e-compromisso-do-pesquisador-atualizado.docx" target="_blank" class="card-link">Baixar modelo atualizado →</a>
+          </div>
+
+          <div class="req-card required">
+            <span class="req-badge obrigatorio">7 · Obrigatório · PDF</span>
+            <h4>Autorização para Realização da Pesquisa</h4>
+            <p>Emitida e assinada pela <strong>instituição onde ocorrerá o estudo</strong>. Obrigatória mesmo quando a pesquisa for realizada na própria UNCISAL. Enviar em PDF.</p>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2020/03/Modelo-de-Autorização-para-realização-de-Pesquisa-atualizada.docx" target="_blank" class="card-link">Baixar modelo atualizado →</a>
+          </div>
+
+          <div class="req-card optional">
+            <span class="req-badge complementar">8 · Quando aplicável · PDF</span>
+            <h4>Termo de Assentimento Livre e Esclarecido — TALE</h4>
+            <p>Exigido em pesquisas envolvendo <strong>crianças ou pessoas legalmente incapazes</strong>. Redigir em linguagem simples, conforme a Resolução CNS nº 466/2012, item II.24. Enviar em PDF.</p>
+            <p style="margin-top:.5rem; font-size:.78rem; color:var(--ink-soft);">Modelo ainda não disponível. O pesquisador deve adequar à realidade da pesquisa.</p>
+          </div>
+
+          <div class="req-card optional">
+            <span class="req-badge complementar">9 · Quando aplicável · PDF</span>
+            <h4>Autorização para Uso de Imagem e Voz</h4>
+            <p>Obrigatória quando a pesquisa envolve <strong>registros de áudio, vídeo ou imagem</strong> dos participantes. Documento independente do TCLE. Enviar em PDF.</p>
+            <p style="margin-top:.5rem; font-size:.78rem; color:var(--ink-soft);">Modelo ainda não disponível. O pesquisador deve adequar à realidade da pesquisa.</p>
+          </div>
+
+        </div>
+
+        <!-- Normas de referência -->
+        <div class="path-notice" style="margin-top:0; margin-bottom:2.5rem;">
+          Normas de referência para a submissão:
+          <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/06/Resolução-466-12.pdf" target="_blank">Resolução CNS nº 466/2012</a> ·
+          <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/14.-Resolução-510-2016-Normas-Aplicáveis-a-Pesquisas-em-Ciências-Humanas-e-So....pdf" target="_blank">Resolução CNS nº 510/2016</a> ·
+          <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/02.-Norma-Operacional-00113-Procedimentos-para-Submissão-e-Tramitação-de-Projetos.pdf" target="_blank">Norma Operacional 001 CEP/CONEP</a>
+        </div>
+
+        <div class="section-header" style="margin-bottom:1.25rem;">
+          <span class="section-tag">Fluxo de submissão</span>
+          <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:400;">Passo a passo</h3>
+        </div>
+
+        <div class="steps reveal">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h4>Elabore os 9 documentos obrigatórios</h4>
+              <p>Redija o projeto completo seguindo o roteiro orientativo do CEP da UNCISAL. Prepare o TCLE, os instrumentos de coleta, as declarações e a autorização institucional. Todos os arquivos devem estar em PDF com assinaturas completas antes da submissão.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h4>Gere a Folha de Rosto na Plataforma Brasil</h4>
+              <p>Acesse <a href="https://plataformabrasil.saude.gov.br" target="_blank">plataformabrasil.saude.gov.br</a>, crie ou atualize seu cadastro e registre o protocolo. Gere a Folha de Rosto, colete as assinaturas do pesquisador principal e da Pró-Reitoria da UNCISAL antes do envio definitivo.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h4>Submeta todos os documentos na Plataforma Brasil</h4>
+              <p>Anexe cada documento no campo correspondente da plataforma. Verifique se todos os arquivos estão em PDF, com assinaturas completas e sem campos em branco. Documentos incompletos geram recusa imediata pelo sistema.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h4>Aguarde a análise do CEP</h4>
+              <p>O CEP da UNCISAL realiza reuniões ordinárias toda quarta-feira à tarde. O prazo máximo regulamentar é de 30 dias úteis a partir da submissão completa. Acompanhe o andamento pela Plataforma Brasil.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div>
+              <h4>Receba o Parecer Consubstanciado e inicie a pesquisa</h4>
+              <p>O resultado é comunicado pelo Parecer Consubstanciado emitido na Plataforma Brasil. A coleta de dados somente pode ter início após parecer favorável. Alterações posteriores ao protocolo aprovado devem ser submetidas como emenda antes de sua implementação.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANUAIS DA PLATAFORMA BRASIL -->
+        <div style="margin-top:2.5rem;" class="reveal">
+          <div style="background:var(--bg-card); border:1px solid var(--rule); border-top:3px solid var(--teal); border-radius:var(--radius); padding:1.75rem;">
+            <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:.5rem;">Apoio operacional</p>
+            <h4 style="font-family:var(--serif); font-size:1.15rem; font-weight:600; margin-bottom:.4rem; padding-bottom:.75rem; border-bottom:1px solid var(--rule);">Precisa de ajuda com a Plataforma Brasil?</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); margin-bottom:1.25rem; line-height:1.7;">Os manuais abaixo orientam cada etapa da submissão diretamente no sistema federal. Todos os arquivos estão disponibilizados pelo CEP da UNCISAL em PDF.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:.5rem;">
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Cadastro-de-usuário.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Cadastro de usuário
+              </a>
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/CADASTRO-DE-INSTITUIÇÃO.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Cadastro de instituição
+              </a>
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Submissão-de-Projeto-de-Pesquisa.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Submissão de projeto de pesquisa
+              </a>
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Submissão-de-Emenda.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Submissão de emenda
+              </a>
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Submissão-de-Recurso-1.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Submissão de recurso
+              </a>
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/ALTERAÇÃO-DE-PESQUISADOR-RESPOINSÁVEL.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Alteração de pesquisador responsável
+              </a>
+
+              <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/ABA-ALTERAR-MEUS-DADOS.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Alterar meus dados
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── CAMINHO 1B: RELATO DE CASO ── -->
+      <div class="pathway-panel" id="path-relato">
+
+        <div class="path-notice">
+          <strong>Relato de caso</strong> — modalidade regulamentada pela <a href="https://cep.uncisal.edu.br/wp-content/uploads/2018/07/Relato-de-caso-Carta-Circular-166-2018-CONEP.pdf" target="_blank">Carta Circular CONEP nº 166/2018</a>. A submissão ocorre exclusivamente pela <a href="https://plataformabrasil.saude.gov.br" target="_blank">Plataforma Brasil</a> e é obrigatória sempre que houver identificação do paciente, uso de imagens ou dados de prontuário. Existem duas situações distintas, com requisitos documentais próprios.
+        </div>
+
+        <!-- Sub-situações -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.5rem;" class="reveal relato-paths">
+
+          <!-- SITUAÇÃO 1: PACIENTE IDENTIFICÁVEL -->
+          <div style="background:var(--bg-card); border:1px solid #a3d4b0; border-top:3px solid #2a7a47; border-radius:var(--radius); padding:1.75rem;">
+            <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#2a7a47; margin-bottom:.5rem;">Situação 1</p>
+            <h4 style="font-family:var(--serif); font-size:1.2rem; font-weight:600; margin-bottom:.3rem; color:var(--ink);">Paciente vivo e capaz de consentir</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); margin-bottom:1.25rem; line-height:1.7;">Caso clínico em que o paciente está vivo, identificado e em condições de assinar o TCLE pessoalmente.</p>
+
+            <div class="section-header" style="margin-bottom:.75rem;">
+              <span class="section-tag" style="font-size:.62rem;">Documentos obrigatórios</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:.6rem;">
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Folha de rosto — Plataforma Brasil</h4>
+                <p>Gerada pela Plataforma Brasil, preenchida, datada e assinada pelo pesquisador principal e pela UNCISAL como Instituição de Ensino Superior proponente.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Autorização para realização de pesquisa</h4>
+                <p>Documento emitido pela instituição onde o caso foi tratado e acompanhado, autorizando o uso das informações para fins científicos.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Relato de caso completo em Word</h4>
+                <p>Texto formatado tal qual será submetido ao periódico para publicação, inserido diretamente na Plataforma Brasil no formato .doc ou .docx.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>TCLE assinado pelo paciente</h4>
+                <p>Elaborado conforme o modelo atualizado (2022), assinado pelo próprio paciente. Quando aplicável, inclui também o Termo de Assentimento. Arquivo em .doc ou .docx.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Declaração de isenção de conflito de interesses</h4>
+                <p>Declaração atualizada, assinada por todos os pesquisadores envolvidos no relato, conforme modelo disponibilizado pelo CEP da UNCISAL.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Termo de responsabilidade e compromisso do pesquisador</h4>
+                <p>Documento assinado pelo pesquisador responsável, confirmando o compromisso com os princípios éticos e com a fidedignidade das informações apresentadas.</p>
+              </div>
+              <div class="req-card optional" style="padding:1rem;">
+                <span class="req-badge complementar">Complementar</span>
+                <h4>Instrumentos de coleta de dados</h4>
+                <p>Formulários, questionários, fichas de avaliação ou roteiros utilizados, inseridos separadamente na Plataforma Brasil quando aplicável ao relato.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SITUAÇÃO 2: PACIENTE FALECIDO OU INCAPAZ -->
+          <div style="background:var(--bg-card); border:1px solid #c5c5d8; border-top:3px solid #5a5a7a; border-radius:var(--radius); padding:1.75rem;">
+            <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#5a5a7a; margin-bottom:.5rem;">Situação 2</p>
+            <h4 style="font-family:var(--serif); font-size:1.2rem; font-weight:600; margin-bottom:.3rem; color:var(--ink);">Paciente falecido ou incapaz de consentir</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); margin-bottom:1.25rem; line-height:1.7;">Caso clínico em que o paciente é falecido, está impossibilitado de assinar ou não pode ser localizado. O TCLE é substituído pelo consentimento do responsável legal.</p>
+
+            <div class="section-header" style="margin-bottom:.75rem;">
+              <span class="section-tag" style="font-size:.62rem;">Documentos obrigatórios</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:.6rem;">
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Folha de rosto — Plataforma Brasil</h4>
+                <p>Gerada pela Plataforma Brasil, preenchida, datada e assinada pelo pesquisador principal e pela UNCISAL como Instituição de Ensino Superior proponente.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Autorização para realização de pesquisa</h4>
+                <p>Documento emitido pela instituição onde o caso foi tratado e acompanhado, autorizando o acesso e uso das informações clínicas para fins científicos.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Relato de caso completo em Word</h4>
+                <p>Texto formatado tal qual será submetido ao periódico para publicação, inserido diretamente na Plataforma Brasil no formato .doc ou .docx.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>TCLE assinado pelo responsável legal</h4>
+                <p>Quando o paciente é incapaz, o TCLE deve ser assinado pelo responsável legal. Em caso de óbito, o Comitê avalia a necessidade do consentimento familiar ou a dispensa fundamentada, conforme a Carta Circular CONEP nº 166/2018.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Justificativa para impossibilidade de consentimento</h4>
+                <p>Documento redigido pelo pesquisador explicando de forma fundamentada a impossibilidade de obtenção do TCLE do próprio paciente, com respaldo na normativa CONEP aplicável.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Declaração de isenção de conflito de interesses</h4>
+                <p>Declaração atualizada, assinada por todos os pesquisadores envolvidos no relato, conforme modelo disponibilizado pelo CEP da UNCISAL.</p>
+              </div>
+              <div class="req-card required" style="padding:1rem;">
+                <span class="req-badge obrigatorio">Obrigatório</span>
+                <h4>Termo de responsabilidade e compromisso do pesquisador</h4>
+                <p>Documento assinado pelo pesquisador responsável, confirmando o compromisso com os princípios éticos e com a fidedignidade das informações apresentadas.</p>
+              </div>
+              <div class="req-card optional" style="padding:1rem;">
+                <span class="req-badge complementar">Complementar</span>
+                <h4>Instrumentos de coleta de dados</h4>
+                <p>Formulários, questionários, fichas de avaliação ou roteiros utilizados, inseridos separadamente na Plataforma Brasil quando aplicável ao relato.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <style>
+          @media (max-width: 768px) {
+            .relato-paths { grid-template-columns: 1fr !important; }
+          }
+        </style>
+
+        <div class="path-notice" style="background:#fef9ec; border-color:#e8d080; color:#7a5c0a;">
+          <strong>Atenção específica ao relato de caso:</strong> O relato completo deve ser inserido na Plataforma Brasil formatado tal qual será submetido ao periódico científico. O CEP avalia com rigor a adequação do TCLE e a garantia de anonimato. Casos em que a combinação de dados clínicos permita identificação indireta do paciente exigem anonimização reforçada ou justificativa técnica fundamentada. Consulte sempre o <a href="https://cep.uncisal.edu.br/documentos-obrigatorios/documentos-obrigatorios-para-relato-de-caso/" target="_blank">site oficial do CEP da UNCISAL</a> para modelos atualizados dos documentos.
+        </div>
+
+      </div>
+
+      <!-- ── CAMINHO 2: RESPOSTA AO PARECER ── -->
+      <div class="pathway-panel" id="path-parecer">
+
+        <div class="path-notice">
+          <strong>Resposta ao Parecer Consubstanciado</strong> — após a análise pelo CEP, o pesquisador recebe um resultado formal. Pareceres favoráveis autorizam o início imediato da pesquisa. Os demais exigem ações distintas conforme o tipo: pendências requerem resposta no prazo de 10 dias úteis; pareceres de não aprovação admitem interposição de recurso fundamentado.
+        </div>
+
+        <!-- Tipos de parecer -->
+        <div class="section-header" style="margin-bottom:1.25rem;">
+          <span class="section-tag">Tipos de resultado</span>
+          <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:300;">Entenda o parecer recebido</h3>
+        </div>
+
+        <div class="parecer-grid reveal">
+          <div class="parecer-card aprovado">
+            <span class="parecer-label">✓ Aprovado</span>
+            <h4>Nenhuma ação necessária</h4>
+            <p>O protocolo foi aprovado sem restrições. A pesquisa pode ser iniciada imediatamente. Guarde o parecer: ele deverá ser referenciado no manuscrito e será exigido pela maioria dos periódicos científicos indexados.</p>
+          </div>
+          <div class="parecer-card pendente">
+            <span class="parecer-label">⚠ Pendente</span>
+            <h4>Resposta em até 10 dias úteis</h4>
+            <p>O CEP identificou pontos que exigem adequação documental ou científica. O pesquisador deve responder a cada pendência de forma fundamentada e submeter os documentos revisados pela Plataforma Brasil dentro do prazo de <strong>10 dias úteis</strong>.</p>
+          </div>
+          <div class="parecer-card nao-aprovado">
+            <span class="parecer-label">✕ Não aprovado</span>
+            <h4>Recurso fundamentado ao CEP</h4>
+            <p>O protocolo apresentou inadequações éticas ou científicas que inviabilizaram sua aprovação na forma apresentada. O pesquisador tem o direito de interpor recurso formal e fundamentado ao próprio CEP, que submeterá a questão à CONEP quando necessário.</p>
+          </div>
+          <div class="parecer-card retirado">
+            <span class="parecer-label">↩ Retirado</span>
+            <h4>Protocolo encerrado pelo pesquisador</h4>
+            <p>O pesquisador optou por retirar o protocolo antes da conclusão da análise. Um novo protocolo deverá ser submetido do início, caso o estudo venha a ser retomado.</p>
+          </div>
+        </div>
+
+        <!-- Sub-caminhos: Pendente x Não Aprovado -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2rem;" class="reveal parecer-paths">
+
+          <!-- PENDENTE -->
+          <div style="background:var(--bg-card); border:1px solid #e8d080; border-top:3px solid #c8a800; border-radius:var(--radius); padding:1.75rem;">
+            <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#8a6d0a; margin-bottom:.75rem;">⚠ Parecer Pendente</p>
+            <h4 style="font-family:var(--serif); font-size:1.2rem; font-weight:600; margin-bottom:1.25rem; color:var(--ink);">Como responder às pendências</h4>
+            <div class="steps" style="gap:0;">
+              <div class="step">
+                <div class="step-num" style="border-color:#c8a800; color:#8a6d0a;">1</div>
+                <div>
+                  <h4>Leia o parecer na íntegra</h4>
+                  <p>Acesse o Parecer Consubstanciado pela <a href="https://plataformabrasil.saude.gov.br" target="_blank">Plataforma Brasil</a> e identifique cada item de pendência, separando as de natureza documental das de mérito científico ou ético.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num" style="border-color:#c8a800; color:#8a6d0a;">2</div>
+                <div>
+                  <h4>Elabore carta-resposta item a item</h4>
+                  <p>Redija carta formal abordando cada pendência de forma numerada e fundamentada. Não ignore nenhum item: discordâncias devem ser argumentadas com referências científicas.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num" style="border-color:#c8a800; color:#8a6d0a;">3</div>
+                <div>
+                  <h4>Revise e adeque os documentos indicados</h4>
+                  <p>Corrija o TCLE, o protocolo ou qualquer documento apontado. Versões revisadas devem ser identificadas com data e, preferencialmente, com controle de alterações ativo.</p>
+                </div>
+              </div>
+              <div class="step" style="border-bottom:none;">
+                <div class="step-num" style="border-color:#c8a800; color:#8a6d0a;">4</div>
+                <div>
+                  <h4>Submeta pela Plataforma Brasil em até 10 dias úteis</h4>
+                  <p>Anexe a carta-resposta e os documentos revisados ao protocolo na Plataforma Brasil. O prazo máximo de resposta é de <strong>10 dias úteis</strong> a partir da emissão do parecer pendente.</p>
+                </div>
+              </div>
+            </div>
+            <div class="path-notice" style="margin-top:1.25rem; margin-bottom:0; font-size:.8rem;">
+              <strong>Atenção:</strong> Protocolos com pendências não respondidas dentro do prazo são arquivados automaticamente. Uma nova submissão será necessária desde o início.
+            </div>
+          </div>
+
+          <!-- NÃO APROVADO -->
+          <div style="background:var(--bg-card); border:1px solid #e0a8a8; border-top:3px solid #c04040; border-radius:var(--radius); padding:1.75rem;">
+            <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#8a2a2a; margin-bottom:.75rem;">✕ Parecer Não Aprovado</p>
+            <h4 style="font-family:var(--serif); font-size:1.2rem; font-weight:600; margin-bottom:1.25rem; color:var(--ink);">Como interpor recurso</h4>
+            <div class="steps" style="gap:0;">
+              <div class="step">
+                <div class="step-num" style="border-color:#c04040; color:#8a2a2a;">1</div>
+                <div>
+                  <h4>Analise os fundamentos da não aprovação</h4>
+                  <p>Leia detalhadamente o Parecer Consubstanciado e identifique os motivos que levaram à não aprovação. Avalie se as inadequações apontadas são passíveis de contestação técnica ou científica.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num" style="border-color:#c04040; color:#8a2a2a;">2</div>
+                <div>
+                  <h4>Elabore recurso formal e fundamentado</h4>
+                  <p>Redija documento de recurso dirigido ao CEP, contestando de forma objetiva e embasada cada ponto que motivou a não aprovação. O recurso deve ser sustentado por argumentação científica e normativa sólida.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num" style="border-color:#c04040; color:#8a2a2a;">3</div>
+                <div>
+                  <h4>Submeta o recurso pela Plataforma Brasil</h4>
+                  <p>Encaminhe o recurso à secretaria do CEP pela <a href="https://plataformabrasil.saude.gov.br" target="_blank">Plataforma Brasil</a>. O Comitê apreciará o recurso em reunião ordinária e emitirá novo parecer ou encaminhará à CONEP quando aplicável.</p>
+                </div>
+              </div>
+              <div class="step" style="border-bottom:none;">
+                <div class="step-num" style="border-color:#c04040; color:#8a2a2a;">4</div>
+                <div>
+                  <h4>Aguarde a decisão do CEP ou da CONEP</h4>
+                  <p>O recurso será analisado pelo colegiado. Mantida a não aprovação, a decisão pode ser encaminhada à CONEP em grau de recurso. Alternativamente, o pesquisador pode reformular e submeter novo protocolo.</p>
+                </div>
+              </div>
+            </div>
+            <div class="path-notice" style="margin-top:1.25rem; margin-bottom:0; font-size:.8rem; background:#fdf0f0; border-color:#c04040; color:#7a2020;">
+              <strong>Importante:</strong> O recurso não suspende o parecer de não aprovação. A coleta de dados permanece vedada até a emissão de novo parecer favorável pelo CEP ou pela CONEP.
+            </div>
+          </div>
+
+        </div>
+
+        <style>
+          @media (max-width: 768px) {
+            .parecer-paths { grid-template-columns: 1fr !important; }
+          }
+        </style>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- PARTICIPANTES -->
+  <div class="tab-panel" id="panel-participantes">
+    <section class="section" id="participantes">
+      <div class="section-header reveal">
+        <span class="section-tag">Para participantes de pesquisa</span>
+        <h2 class="section-title">Seus direitos são inalienáveis</h2>
+        <p class="section-lead">A participação em qualquer pesquisa científica é um ato voluntário e informado. Você tem o direito de conhecer, questionar e recusar qualquer procedimento a qualquer momento, sem nenhum prejuízo ao seu atendimento ou cuidado de saúde.</p>
+      </div>
+
+      <div class="cards-grid reveal">
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Consentimento livre e esclarecido</h3>
+          <p>Antes de qualquer procedimento, você deve receber e assinar o Termo de Consentimento Livre e Esclarecido (TCLE), redigido em linguagem acessível, com explicação detalhada dos objetivos, metodologia, riscos, benefícios e alternativas existentes à participação.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <h3>Retirada do consentimento</h3>
+          <p>Você pode retirar seu consentimento a qualquer momento, sem necessidade de justificativa e sem qualquer penalidade, prejuízo ao tratamento ou represália de qualquer natureza por parte da equipe de pesquisa ou da instituição.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+          <h3>Privacidade e confidencialidade</h3>
+          <p>Seus dados pessoais, informações de saúde e identidade são protegidos por sigilo rigoroso, garantido pela Resolução CNS nº 466/2012 e pela Lei Geral de Proteção de Dados Pessoais (LGPD). A publicação dos resultados ocorrerá sempre de forma anônima.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/>
+            </svg>
+          </div>
+          <h3>Ressarcimento e indenização</h3>
+          <p>Todas as despesas decorrentes de sua participação na pesquisa — como transporte e alimentação — devem ser integralmente ressarcidas pelo pesquisador responsável. Em caso de dano comprovado causado pela pesquisa, você tem direito à indenização, independentemente da existência de culpa.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <h3>Acesso às informações e resultados</h3>
+          <p>Você tem direito de ser informado sobre os resultados parciais e finais da pesquisa sempre que solicitado, bem como de receber esclarecimentos adicionais sobre qualquer aspecto do estudo em qualquer fase de sua execução.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.1 19.79 19.79 0 01.01 2.38a2 2 0 012-2.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <h3>Contato direto com o CEP</h3>
+          <p>Você tem garantido o direito de contato direto e independente com este Comitê de Ética em Pesquisa — de forma separada do pesquisador — para esclarecer dúvidas, comunicar eventos adversos ou registrar qualquer inconformidade ocorrida durante a pesquisa.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3>Proteção de grupos vulneráveis</h3>
+          <p>Crianças, adolescentes, pessoas com deficiência, idosos e demais grupos vulneráveis contam com proteção ética reforçada. Nesses casos, o consentimento dos responsáveis legais é obrigatório e o assentimento do próprio participante é sempre buscado, conforme sua capacidade de compreensão.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+              <path d="M12 8h.01M11 12h1v4h1"/>
+            </svg>
+          </div>
+          <h3>Gratuidade absoluta</h3>
+          <p>A participação em pesquisa científica é sempre gratuita. É expressamente vedado exigir qualquer forma de pagamento, contribuição ou contrapartida financeira do participante como condição para inclusão ou permanência no estudo.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIREITOS STRIP -->
+    <div class="rights-strip">
+      <div class="rights-grid">
+        <div class="right-item">
+          <svg class="right-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h4>Segurança</h4>
+          <p>Toda pesquisa deve garantir que os riscos sejam minimizados e proporcionais aos benefícios esperados para os participantes e para a sociedade.</p>
+        </div>
+        <div class="right-item">
+          <svg class="right-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <h4>Voluntariedade</h4>
+          <p>A participação é integralmente voluntária. Recusar, pausar ou interromper a participação não gera qualquer penalidade ou prejuízo.</p>
+        </div>
+        <div class="right-item">
+          <svg class="right-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><path d="M1 6s4-2 11-2 11 2 11 2v13s-4-2-11-2S1 19 1 19z"/><path d="M1 6v13M23 6v13"/></svg>
+          <h4>Informação</h4>
+          <p>Você tem direito a todas as informações sobre a pesquisa antes, durante e após a sua realização, em linguagem que compreenda.</p>
+        </div>
+        <div class="right-item">
+          <svg class="right-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <h4>Dignidade</h4>
+          <p>Seu bem-estar, integridade física, psíquica e moral prevalecem sobre qualquer objetivo científico, institucional ou financeiro.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CANAL DE COMUNICAÇÃO COM O CEP -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--rule);">
+      <div class="section-header reveal">
+        <span class="section-tag">Canal do participante</span>
+        <h2 class="section-title">Denúncias, reclamações e esclarecimentos</h2>
+        <p class="section-lead">O CEP da UNCISAL mantém canal exclusivo e independente para que participantes de pesquisa possam exercer seus direitos de forma direta, segura e confidencial — sem qualquer intermediação da equipe de pesquisa.</p>
+      </div>
+
+      <div class="cards-grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
+
+        <div class="card" style="border-left: 3px solid var(--gold);">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <h3>Denúncia de irregularidade ética</h3>
+          <p>Caso identifique que a pesquisa está sendo realizada em desacordo com o protocolo aprovado, que procedimentos não autorizados estão sendo aplicados, ou que seus direitos estão sendo violados, comunique imediatamente ao CEP. O sigilo do denunciante é assegurado.</p>
+          <a href="https://wa.me/5582987052777" target="_blank" class="card-link">Contatar o CEP →</a>
+        </div>
+
+        <div class="card" style="border-left: 3px solid var(--teal);">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <h3>Reclamação sobre conduta da equipe</h3>
+          <p>Se você se sentir pressionado, constrangido, mal informado ou tratado de forma inadequada pela equipe de pesquisa, registre sua reclamação diretamente ao CEP. O Comitê analisará o caso de forma independente e tomará as providências cabíveis.</p>
+          <a href="https://wa.me/5582987052777" target="_blank" class="card-link">Registrar reclamação →</a>
+        </div>
+
+        <div class="card" style="border-left: 3px solid var(--gold);">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <h3>Esclarecimento de dúvidas</h3>
+          <p>Você pode solicitar ao CEP esclarecimentos sobre qualquer aspecto da pesquisa em que está participando: sobre o TCLE, sobre procedimentos realizados, sobre seus direitos, sobre a destinação dos dados coletados ou sobre os resultados do estudo.</p>
+          <a href="https://wa.me/5582987052777" target="_blank" class="card-link">Solicitar esclarecimento →</a>
+        </div>
+
+      </div>
+
+      <!-- Destaque canal -->
+      <div class="reveal" style="margin-top: 2rem; background: var(--teal); border-radius: var(--radius); padding: 2rem 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; flex-wrap: wrap;">
+        <div>
+          <p style="font-size:.7rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:.5rem;">Canal oficial do participante</p>
+          <h3 style="font-family:var(--serif); font-size:1.5rem; font-weight:300; color:#fff; margin-bottom:.5rem;">CEP UNCISAL · WhatsApp</h3>
+          <p style="font-size:.875rem; color:rgba(255,255,255,.65); line-height:1.7;">Atendimento presencial de segunda a sexta, das 13h às 18h, no 3º andar do prédio sede. Comunicações pelo WhatsApp são respondidas em dias úteis. O sigilo é garantido em todos os casos.</p>
+        </div>
+        <div style="text-align:center; flex-shrink:0;">
+          <p style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:#fff; white-space:nowrap;"><a href="https://wa.me/5582987052777" target="_blank" class="canal-num-link">(82) 98705-2777</a></p>
+          <a href="https://wa.me/5582987052777" target="_blank" class="btn btn-primary" style="margin-top:.75rem; font-size:.78rem;">Abrir WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<hr class="section-rule" />
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-header reveal">
+    <span class="section-tag">Perguntas frequentes</span>
+    <h2 class="section-title">Dúvidas comuns</h2>
+  </div>
+
+  <div class="accordion reveal">
+
+    <div class="acc-item">
+      <button class="acc-btn">
+        Toda pesquisa precisa de aprovação do CEP?
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body">Sim. Toda e qualquer pesquisa que envolva seres humanos, direta ou indiretamente, necessita de aprovação prévia pelo CEP competente, nos termos da Resolução CNS nº 466/2012 e suas complementares. Isso inclui pesquisas com dados secundários, entrevistas, coleta de material biológico e estudos observacionais.</div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">
+        Quanto tempo demora a análise de um protocolo?
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body">O prazo regulamentar para análise de protocolos pelo CEP é de até 30 dias corridos a partir da data de submissão completa dos documentos. Protocolos de maior complexidade ou que exijam apreciação pela CONEP podem demandar prazo adicional. O acompanhamento é realizado pela <a href="https://plataformabrasil.saude.gov.br" target="_blank">Plataforma Brasil</a>.</div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">
+        O que é o TCLE e por que ele é obrigatório?
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body">O Termo de Consentimento Livre e Esclarecido (TCLE) é o documento que formaliza o processo ético de obtenção do consentimento do participante. Deve ser elaborado em linguagem acessível, sem tecnicismos excessivos, e deve contemplar todas as informações relevantes sobre a pesquisa. É um requisito ético e legal obrigatório em todas as pesquisas com seres humanos.</div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">
+        Posso realizar a pesquisa antes da aprovação?
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body">Não. O início da coleta de dados somente é permitido após a emissão do Parecer Consubstanciado favorável pelo CEP ou, nos casos que exijam apreciação superior, pela CONEP. O descumprimento dessa norma constitui infração ética grave e pode ensejar sanções disciplinares e institucionais.</div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">
+        Como proceder em caso de evento adverso durante a pesquisa?
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body">Eventos adversos graves, sejam esperados ou inesperados, devem ser comunicados imediatamente ao CEP por meio da Plataforma Brasil. O pesquisador responsável deve adotar as medidas protetivas necessárias para os participantes e aguardar orientações do Comitê sobre a continuidade ou suspensão do estudo.</div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">
+        Participantes podem solicitar seus dados à equipe de pesquisa?
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body">Sim. O participante tem direito de solicitar acesso, retificação ou exclusão de seus dados pessoais coletados, conforme a Lei Geral de Proteção de Dados Pessoais (LGPD) e as diretrizes éticas nacionais. A equipe de pesquisa deve atender prontamente a tais solicitações, resguardando a integridade metodológica do estudo.</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-rule" />
+
+<!-- SOBRE O CEP -->
+<section class="section" id="sobre">
+  <div class="section-header reveal">
+    <span class="section-tag">Sobre o CEP</span>
+    <h2 class="section-title">Base institucional e regulatória</h2>
+    <p class="section-lead">O CEP da UNCISAL é um colegiado interdisciplinar e independente, credenciado junto ao SINEP sob o registro nº 5011. Seus atos, composição e procedimentos são regidos pelos documentos abaixo, todos de acesso público.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;" class="reveal sobre-grid">
+
+    <!-- DOCUMENTOS INSTITUCIONAIS -->
+    <div style="background:var(--bg-card); border:1px solid var(--rule); border-radius:var(--radius); padding:1.75rem;">
+      <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem;">Regimento e normas</p>
+      <h4 style="font-family:var(--serif); font-size:1.15rem; font-weight:600; margin-bottom:1.25rem; padding-bottom:.75rem; border-bottom:1px solid var(--rule);">Documentos institucionais</h4>
+
+      <div style="display:flex; flex-direction:column; gap:.6rem;">
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2024/11/revisado-regimento_CEP_UNCISAL_2024.docx.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Regimento Interno do CEP UNCISAL</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">Versão revisada · 2024</p>
+          </div>
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2021/09/Regimento-interno-do-CEP-UNCISAL-2020.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Regimento Interno do CEP UNCISAL</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">Versão anterior · 2020</p>
+          </div>
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/02.-Norma-Operacional-001-13-Procedimentos-para-Submissão-e-Tramitação-de-Projetos.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Norma Operacional 001/2013 — CEP/CONEP</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">Procedimentos para submissão e tramitação de projetos</p>
+          </div>
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/01_Resolução-46612-Aprova-as-normas-regulamentadoras-de-pesquisas-envolvendo-seres-humanos-11.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Resolução CNS nº 466/2012</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">Normas regulamentadoras de pesquisas envolvendo seres humanos</p>
+          </div>
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/14.-Resolução-510-2016-Normas-Aplicáveis-a-Pesquisas-em-Ciências-Humanas-e-So....pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='var(--teal-lt)';this.style.borderColor='var(--teal)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Resolução CNS nº 510/2016</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">Normas aplicáveis a pesquisas em Ciências Humanas e Sociais</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- CREDENCIAMENTOS E PORTARIAS -->
+    <div style="background:var(--bg-card); border:1px solid var(--rule); border-radius:var(--radius); padding:1.75rem;">
+      <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Credenciamentos e portarias</p>
+      <h4 style="font-family:var(--serif); font-size:1.15rem; font-weight:600; margin-bottom:1.25rem; padding-bottom:.75rem; border-bottom:1px solid var(--rule);">Certificações e atos de composição</h4>
+
+      <div style="display:flex; flex-direction:column; gap:.6rem;">
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2024/07/Renovacao-de-credenciamento-CEP-janeiro-de-2024-SEI_MS-0038596171-Oficio-1-4.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Renovação de credenciamento — CEP 5011</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">Ofício SEI/MS · Janeiro de 2024</p>
+          </div>
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2021/09/Renovacao-de-registro-Carta-no-606-de-2020-CONEP.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Renovação de registro — Carta CONEP nº 606</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">2020</p>
+          </div>
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/edited_Digitalizar-7-de-jun-de-2017-15.5121.pdf" target="_blank" style="display:flex; align-items:flex-start; gap:.75rem; padding:.85rem 1rem; border:1px solid var(--rule); border-radius:8px; text-decoration:none; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:18px;height:18px;flex-shrink:0;margin-top:2px"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+          <div>
+            <p style="font-size:.85rem; font-weight:500; margin-bottom:.15rem;">Renovação de credenciamento — Carta Circular CONEP nº 143</p>
+            <p style="font-size:.72rem; color:var(--ink-soft);">2017</p>
+          </div>
+        </a>
+
+        <div style="margin-top:.5rem; padding-top:.75rem; border-top:1px solid var(--rule);">
+          <p style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:.6rem;">Portarias de composição do colegiado</p>
+
+          <div style="display:flex; flex-direction:column; gap:.4rem;">
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2024/07/portaria-2023-CEP-5011.pdf" target="_blank" style="display:flex; align-items:center; gap:.6rem; padding:.6rem .85rem; border:1px solid var(--rule); border-radius:6px; text-decoration:none; font-size:.8rem; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Portaria UNCISAL nº 5857/2023 — DOE-AL, 14 nov. 2023
+            </a>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2023/05/portaria-CEP-UNCISAL-abril-2023-publicacao_26_04_23.pdf" target="_blank" style="display:flex; align-items:center; gap:.6rem; padding:.6rem .85rem; border:1px solid var(--rule); border-radius:6px; text-decoration:none; font-size:.8rem; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Portaria CEP UNCISAL — DOE-AL, 26 abr. 2023
+            </a>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2021/09/Ato-de-designacao-SEI_AL-4116939-Portaria-2604-de-13-de-agosto-de-2020-CEP-5011.pdf" target="_blank" style="display:flex; align-items:center; gap:.6rem; padding:.6rem .85rem; border:1px solid var(--rule); border-radius:6px; text-decoration:none; font-size:.8rem; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Portaria nº 2604/2020 — SEI-AL, 13 ago. 2020
+            </a>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2018/07/Portaria-CEP-DOE-AL-28-de-junho-2018-página-37.pdf" target="_blank" style="display:flex; align-items:center; gap:.6rem; padding:.6rem .85rem; border:1px solid var(--rule); border-radius:6px; text-decoration:none; font-size:.8rem; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Portaria CEP — DOE-AL, 28 jun. 2018
+            </a>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2018/03/Portaria-CEP-DOE-AL-19-12-2017.pdf" target="_blank" style="display:flex; align-items:center; gap:.6rem; padding:.6rem .85rem; border:1px solid var(--rule); border-radius:6px; text-decoration:none; font-size:.8rem; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Portaria CEP — DOE-AL, 19 dez. 2017
+            </a>
+            <a href="https://cep.uncisal.edu.br/wp-content/uploads/2022/10/portaria-do-CEP-2016-DOE-AL-24-11-2016.pdf" target="_blank" style="display:flex; align-items:center; gap:.6rem; padding:.6rem .85rem; border:1px solid var(--rule); border-radius:6px; text-decoration:none; font-size:.8rem; color:var(--ink); transition:all .2s;" onmouseover="this.style.background='#fef9ec';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Portaria CEP — DOE-AL, 24 nov. 2016
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:1.5rem;" class="reveal">
+    <div style="background:var(--bg-card); border:1px solid var(--rule); border-radius:var(--radius); padding:1.75rem;">
+      <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:.5rem;">Material de referência</p>
+      <h4 style="font-family:var(--serif); font-size:1.15rem; font-weight:600; margin-bottom:.4rem; padding-bottom:.75rem; border-bottom:1px solid var(--rule);">Manuais técnicos da Plataforma Brasil</h4>
+      <p style="font-size:.82rem; color:var(--ink-soft); margin-bottom:1.25rem; line-height:1.7;">Documentos de referência sobre o funcionamento e as funcionalidades do sistema, voltados para a gestão de protocolos, tramitação no CEP e comunicação institucional.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:.5rem;">
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Funcionalidades-da-Aba-Pesquisador.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Funcionalidades da aba Pesquisador
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Funcionalidades-da-aba-CEP.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Funcionalidades da aba CEP
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/ANÁLISE-E-TRAMITAÇÃO-DE-PROJETO-NO-CEP.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Análise e tramitação de projeto no CEP
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Lista-de-Documentos-Replicados-em-Projetos.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Lista de documentos replicados em projetos
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Pendências-Frequentes-em-Protocolos-de-Pesquisa-Clínica.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Pendências frequentes em protocolos clínicos
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Envio-de-Notificação.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Envio de notificação
+        </a>
+
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2017/05/Descrição-das-Contas-de-E-mail-da-CONEP.pdf" target="_blank" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border:1px solid var(--rule);border-radius:6px;text-decoration:none;font-size:.8rem;color:var(--ink);transition:all .2s;" onmouseover="this.style.background='#fafaf7';this.style.borderColor='var(--ink-soft)'" onmouseout="this.style.background='';this.style.borderColor='var(--rule)'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Descrição das contas de e-mail da CONEP
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;" class="reveal">
+    <div style="background:var(--bg-card); border:1px solid var(--rule); border-radius:var(--radius); padding:1.75rem;">
+      <p style="font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:.5rem;">Colegiado atual</p>
+      <h4 style="font-family:var(--serif); font-size:1.15rem; font-weight:600; margin-bottom:.4rem; padding-bottom:.75rem; border-bottom:1px solid var(--rule);">Composição do CEP — Quadriênio 2024/2028</h4>
+      <p style="font-size:.82rem; color:var(--ink-soft); margin-bottom:1.25rem; line-height:1.7;">Membros titulares e suplentes designados pela Portaria UNCISAL nº 5857/2023, publicada no Diário Oficial do Estado de Alagoas em 14 de novembro de 2023.</p>
+      <div style="text-align:center;">
+        <img src="https://cep.uncisal.edu.br/wp-content/uploads/2024/07/composicao-do-CEP-2024-300x275.png"
+             alt="Composição do CEP UNCISAL — Quadriênio 2024/2028"
+             style="max-width:100%; height:auto; border-radius:6px; border:1px solid var(--rule);" />
+      </div>
+      <div style="margin-top:1.25rem; text-align:center;">
+        <a href="https://cep.uncisal.edu.br/wp-content/uploads/2024/07/portaria-2023-CEP-5011.pdf" target="_blank" class="btn btn-outline" style="background:var(--teal); color:#fff; font-size:.78rem; display:inline-flex;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:15px;height:15px;">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+          Ver Portaria nº 5857/2023
+        </a>
+        <a href="https://cep.uncisal.edu.br/composicao-do-cep/" target="_blank" class="btn btn-outline" style="font-size:.78rem; display:inline-flex; margin-left:.5rem;">
+          Página oficial →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      .sobre-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+</section>
+
+<hr class="section-rule" />
+<section class="section" id="contato">
+  <div class="section-header reveal">
+    <span class="section-tag">Entre em contato</span>
+    <h2 class="section-title">Fale com o CEP</h2>
+    <p class="section-lead">Nossa equipe está disponível para orientar pesquisadores, participantes e instituições sobre todos os aspectos do processo de avaliação ética.</p>
+  </div>
+
+  <div class="contact-grid reveal">
+
+    <div class="contact-card">
+      <h3>Secretaria do CEP</h3>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        <div>
+          <span class="contact-label">WhatsApp oficial</span>
+          <span class="contact-value"><a href="https://wa.me/5582987052777" target="_blank">(82) 98705-2777</a></span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <div>
+          <span class="contact-label">Site oficial</span>
+          <span class="contact-value"><a href="https://cep.uncisal.edu.br" target="_blank">cep.uncisal.edu.br</a></span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div>
+          <span class="contact-label">Endereço</span>
+          <span class="contact-value"><a href="https://maps.google.com/?q=Rua+Dr.+Jorge+de+Lima,+113,+Trapiche+da+Barra,+Maceió,+AL" target="_blank">Rua Dr. Jorge de Lima, 113, Trapiche da Barra — Maceió/AL, CEP 57010-300 · Prédio sede, primeiro andar</a></span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div>
+          <span class="contact-label">Horário de atendimento presencial</span>
+          <span class="contact-value">Segunda a sexta, das 13h às 18h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h3>Reuniões ordinárias</h3>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div>
+          <span class="contact-label">Periodicidade</span>
+          <span class="contact-value">Semanal · toda quarta-feira</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div>
+          <span class="contact-label">Turno</span>
+          <span class="contact-value">Período da tarde</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div>
+          <span class="contact-label">Local</span>
+          <span class="contact-value">Prédio sede da UNCISAL · primeiro andar</span>
+        </div>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <div>
+          <span class="contact-label">Prazo de submissão</span>
+          <span class="contact-value">Cinco dias úteis antes da reunião</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <strong>Atenção:</strong> O CEP da UNCISAL comunica instabilidades periódicas em seus canais de atendimento. Consulte sempre o site oficial <strong><a href="https://cep.uncisal.edu.br" target="_blank">cep.uncisal.edu.br</a></strong> para verificar alertas sobre funcionamento. Participantes ou pesquisadores que identificarem irregularidades éticas podem contatar o Comitê diretamente pelo WhatsApp <strong><a href="https://wa.me/5582987052777" target="_blank">(82) 98705-2777</a></strong>, em caráter confidencial.
+    </div>
+
+  </div>
+</section>
+
+<!-- SOCIAL BAR -->
+<div class="footer-social">
+
+  <a href="https://instagram.com/cepuncisal" target="_blank"
+     class="social-link instagram" data-tip="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="2" y="2" width="20" height="20" rx="5"/>
+      <circle cx="12" cy="12" r="4.5"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+  </a>
+
+  <div class="social-divider"></div>
+
+  <a href="https://wa.me/5582987052777" target="_blank"
+     class="social-link whatsapp" data-tip="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+    </svg>
+  </a>
+
+  <div class="social-divider"></div>
+
+  <a href="mailto:cep@instituicao.edu.br"
+     class="social-link email" data-tip="E-mail">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </svg>
+  </a>
+
+  <div class="social-divider"></div>
+
+  <a href="https://cep.uncisal.edu.br" target="_blank"
+     class="social-link site" data-tip="Site institucional">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+    </svg>
+  </a>
+
+  <div class="social-divider"></div>
+
+  <a href="https://plataformabrasil.saude.gov.br" target="_blank"
+     class="social-link plataforma" data-tip="Plataforma Brasil">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <ellipse cx="12" cy="12" rx="10" ry="4"/>
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/>
+    </svg>
+  </a>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="justify-content: center; text-align: center;">
+  <p>© 2026 CEP UNCISAL — Comitê de Ética em Pesquisa · Todos os direitos reservados.<br>
+  Universidade Estadual de Ciências da Saúde de Alagoas · Registro SINEP nº 5011</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileNav');
+  ham.addEventListener('click', () => mob.classList.toggle('open'));
+  function closeMobile() { mob.classList.remove('open'); }
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.acc-btn').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); }
+    });
+  });
+
+  // Pathway sub-nav (within researchers tab)
+  document.querySelectorAll('.path-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.path-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pathway-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('path-' + btn.dataset.path).classList.add('active');
+      // re-trigger reveal for newly shown elements
+      document.querySelectorAll('#path-' + btn.dataset.path + ' .reveal').forEach(el => {
+        el.classList.remove('visible');
+        setTimeout(() => observer.observe(el), 50);
+      });
+    });
+  });
+
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
