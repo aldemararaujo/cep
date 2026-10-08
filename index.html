@@ -705,9 +705,63 @@
       letter-spacing: .1em;
     }
 
+    .version-link {
+      font-family: var(--sans);
+      font-size: .7rem;
+      color: rgba(255,255,255,.35);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      letter-spacing: .06em;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .version-link:hover { color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.4); }
+
+    /* ── MODAL HISTÓRICO ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(26,28,32,.7);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 48px rgba(0,0,0,.22);
+      max-width: 560px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem 2.25rem;
+    }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .modal-header h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; }
+    .modal-close {
+      background: none; border: none; cursor: pointer;
+      font-size: 1.4rem; color: var(--ink-soft); line-height: 1;
+      padding: .25rem .5rem; border-radius: 4px;
+    }
+    .modal-close:hover { background: var(--rule); }
+    .version-entry { border-left: 3px solid var(--teal); padding: .75rem 1rem .75rem 1.25rem; margin-bottom: 1.25rem; }
+    .version-entry:last-child { margin-bottom: 0; }
+    .version-tag { font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); margin-bottom: .3rem; }
+    .version-date { font-size: .75rem; color: var(--ink-soft); margin-bottom: .5rem; }
+    .version-entry ul { font-size: .83rem; line-height: 1.7; color: var(--ink); padding-left: 1.1rem; }
+    .version-entry ul li { margin-bottom: .2rem; }
+
     @media (max-width: 480px) {
       .social-divider { display: none; }
       .footer-social { gap: .5rem; }
+      .modal-box { padding: 1.5rem 1.25rem; }
     }
 
     /* ── RESPONSIVE ── */
@@ -1010,6 +1064,14 @@
         <button class="path-btn" data-path="parecer">
           <span class="path-num">2</span>
           Responder ao Parecer Consubstanciado
+        </button>
+        <button class="path-btn" data-path="notificacao">
+          <span class="path-num">3</span>
+          Enviar Notificação
+        </button>
+        <button class="path-btn" data-path="emenda">
+          <span class="path-num">4</span>
+          Enviar Emenda
         </button>
       </div>
 
@@ -1525,6 +1587,237 @@
         </style>
 
       </div>
+
+      <!-- ── CAMINHO 3: NOTIFICAÇÕES ── -->
+      <div class="pathway-panel" id="path-notificacao">
+
+        <div class="path-notice">
+          <strong>Notificações ao CEP</strong> — após a aprovação do protocolo, o pesquisador responsável tem a obrigação ética e regulatória de informar o CEP sobre o andamento do estudo. Isso inclui o envio de <em>relatórios parciais</em> e do <em>relatório final</em>, bem como a comunicação de eventos adversos graves ou desvios de protocolo. Todas as notificações são realizadas exclusivamente pela <a href="https://plataformabrasil.saude.gov.br" target="_blank">Plataforma Brasil</a>.
+        </div>
+
+        <!-- Dois tipos de notificação -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.5rem;">
+
+          <!-- Relatório Parcial -->
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.5rem; box-shadow:var(--shadow);">
+            <div style="display:flex; align-items:center; gap:.7rem; margin-bottom:1rem;">
+              <span style="width:36px;height:36px;border-radius:50%;background:var(--teal-lt);color:var(--teal);font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">📋</span>
+              <h4 style="font-family:var(--serif); font-size:1.1rem; font-weight:500;">Relatório Parcial</h4>
+            </div>
+            <p style="font-size:.85rem; color:var(--ink-soft); line-height:1.65; margin-bottom:1rem;">
+              Deve ser enviado anualmente, ao completar 12 meses da aprovação, ou conforme o cronograma aprovado. Informa o CEP sobre o andamento da pesquisa, o número de participantes recrutados, eventos adversos e eventuais dificuldades operacionais.
+            </p>
+            <div style="font-size:.78rem; color:var(--ink-soft); border-top:1px solid var(--rule); padding-top:.75rem;">
+              <strong style="display:block; margin-bottom:.4rem; color:var(--ink);">Documentos exigidos</strong>
+              <ul style="padding-left:1.1rem; line-height:1.8;">
+                <li>Formulário de relatório parcial (gerado na Plataforma Brasil)</li>
+                <li>Resumo do progresso das atividades</li>
+                <li>Relação atualizada de participantes recrutados</li>
+                <li>Declaração de ocorrência (ou não) de eventos adversos</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Relatório Final -->
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.5rem; box-shadow:var(--shadow);">
+            <div style="display:flex; align-items:center; gap:.7rem; margin-bottom:1rem;">
+              <span style="width:36px;height:36px;border-radius:50%;background:#edf7f0;color:#2d7a4f;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✅</span>
+              <h4 style="font-family:var(--serif); font-size:1.1rem; font-weight:500;">Relatório Final</h4>
+            </div>
+            <p style="font-size:.85rem; color:var(--ink-soft); line-height:1.65; margin-bottom:1rem;">
+              Obrigatório ao término da pesquisa. Deve ser enviado em até 60 dias após a conclusão da coleta de dados. Contém os resultados finais, a análise ética dos dados obtidos e a declaração de encerramento do protocolo.
+            </p>
+            <div style="font-size:.78rem; color:var(--ink-soft); border-top:1px solid var(--rule); padding-top:.75rem;">
+              <strong style="display:block; margin-bottom:.4rem; color:var(--ink);">Documentos exigidos</strong>
+              <ul style="padding-left:1.1rem; line-height:1.8;">
+                <li>Formulário de relatório final (gerado na Plataforma Brasil)</li>
+                <li>Sumário dos resultados obtidos</li>
+                <li>Relação final de participantes incluídos e excluídos</li>
+                <li>Declaração de conclusão da pesquisa assinada pelo responsável</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Passo a passo -->
+        <div class="section-header" style="margin-bottom:1.25rem;">
+          <span class="section-tag">Passo a passo</span>
+          <h3 style="font-family:var(--serif); font-size:1.35rem; font-weight:400;">Como enviar a notificação pela Plataforma Brasil</h3>
+        </div>
+
+        <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); overflow:hidden; box-shadow:var(--shadow); margin-bottom:2rem;">
+          <div class="step" style="border-bottom:1px solid var(--rule);">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">1</div>
+            <div>
+              <h4>Acesse o protocolo aprovado na Plataforma Brasil</h4>
+              <p>Faça login em <a href="https://plataformabrasil.saude.gov.br" target="_blank" style="color:var(--teal);">plataformabrasil.saude.gov.br</a> como pesquisador responsável. Localize o protocolo aprovado e clique em "Notificação".</p>
+            </div>
+          </div>
+          <div class="step" style="border-bottom:1px solid var(--rule);">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">2</div>
+            <div>
+              <h4>Selecione o tipo de notificação</h4>
+              <p>Escolha entre Relatório Parcial ou Relatório Final, conforme a etapa da pesquisa. O sistema gerará automaticamente o formulário correspondente.</p>
+            </div>
+          </div>
+          <div class="step" style="border-bottom:1px solid var(--rule);">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">3</div>
+            <div>
+              <h4>Preencha o formulário e anexe os documentos</h4>
+              <p>Complete todas as seções obrigatórias do relatório. Anexe os documentos complementares exigidos no formato PDF, com assinatura do pesquisador responsável.</p>
+            </div>
+          </div>
+          <div class="step" style="border-bottom:none;">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">4</div>
+            <div>
+              <h4>Envie e acompanhe a análise</h4>
+              <p>Submeta a notificação e acompanhe o status pela plataforma. Em caso de pendências, o CEP emitirá um parecer solicitando complementações no prazo habitual.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="background:#fffbf0; border:1px solid var(--gold-lt); border-radius:var(--radius); padding:1rem 1.25rem; font-size:.83rem; color:var(--ink); line-height:1.65;">
+          <strong>⚠ Atenção:</strong> O não envio dos relatórios parciais e final constitui pendência ética que pode impedir futuras aprovações pelo CEP. Eventos adversos graves devem ser comunicados imediatamente, independentemente do calendário de notificações programadas.
+        </div>
+
+      </div>
+
+      <!-- ── CAMINHO 4: EMENDAS ── -->
+      <div class="pathway-panel" id="path-emenda">
+
+        <div class="path-notice">
+          <strong>Emendas ao protocolo aprovado</strong> — qualquer alteração no projeto de pesquisa original — seja na metodologia, nos instrumentos de coleta, na equipe, no orçamento, no cronograma ou no Termo de Consentimento Livre e Esclarecido — exige a submissão de uma emenda ao CEP antes de ser implementada. A realização de alterações sem aprovação prévia configura desvio de protocolo.
+        </div>
+
+        <!-- Tipos de emenda -->
+        <div class="section-header" style="margin-bottom:1.25rem;">
+          <span class="section-tag">Quando uma emenda é necessária?</span>
+          <h3 style="font-family:var(--serif); font-size:1.35rem; font-weight:400;">Situações que exigem submissão de emenda</h3>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-bottom:2.5rem;">
+
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.25rem; box-shadow:var(--shadow);">
+            <div style="font-size:1.3rem; margin-bottom:.5rem;">📝</div>
+            <h4 style="font-family:var(--serif); font-size:1rem; font-weight:500; margin-bottom:.5rem;">Alteração metodológica</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); line-height:1.6;">Mudança nos critérios de inclusão ou exclusão, no delineamento do estudo, nos instrumentos de coleta de dados ou nos procedimentos realizados com participantes.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.25rem; box-shadow:var(--shadow);">
+            <div style="font-size:1.3rem; margin-bottom:.5rem;">📄</div>
+            <h4 style="font-family:var(--serif); font-size:1rem; font-weight:500; margin-bottom:.5rem;">Alteração no TCLE</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); line-height:1.6;">Qualquer modificação no Termo de Consentimento Livre e Esclarecido, incluindo ajustes de linguagem, acréscimo de riscos identificados ou atualização de procedimentos.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.25rem; box-shadow:var(--shadow);">
+            <div style="font-size:1.3rem; margin-bottom:.5rem;">👥</div>
+            <h4 style="font-family:var(--serif); font-size:1rem; font-weight:500; margin-bottom:.5rem;">Mudança na equipe</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); line-height:1.6;">Substituição do pesquisador responsável, inclusão ou exclusão de pesquisadores participantes ou orientadores, e alteração institucional.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.25rem; box-shadow:var(--shadow);">
+            <div style="font-size:1.3rem; margin-bottom:.5rem;">📅</div>
+            <h4 style="font-family:var(--serif); font-size:1rem; font-weight:500; margin-bottom:.5rem;">Prorrogação de prazo</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); line-height:1.6;">Extensão do cronograma de execução do projeto além do período originalmente aprovado, inclusive para coleta de dados ou análise.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.25rem; box-shadow:var(--shadow);">
+            <div style="font-size:1.3rem; margin-bottom:.5rem;">💰</div>
+            <h4 style="font-family:var(--serif); font-size:1rem; font-weight:500; margin-bottom:.5rem;">Alteração orçamentária</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); line-height:1.6;">Mudança na fonte de financiamento, no valor total do projeto ou na inclusão de patrocinadores não informados originalmente.</p>
+          </div>
+
+          <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.25rem; box-shadow:var(--shadow);">
+            <div style="font-size:1.3rem; margin-bottom:.5rem;">🏥</div>
+            <h4 style="font-family:var(--serif); font-size:1rem; font-weight:500; margin-bottom:.5rem;">Inclusão de centros</h4>
+            <p style="font-size:.82rem; color:var(--ink-soft); line-height:1.6;">Ampliação do estudo para novos centros participantes ou instituições coparticipantes não previstas na aprovação original.</p>
+          </div>
+
+        </div>
+
+        <!-- Documentos necessários -->
+        <div class="section-header" style="margin-bottom:1.25rem;">
+          <span class="section-tag">Documentos</span>
+          <h3 style="font-family:var(--serif); font-size:1.35rem; font-weight:400;">O que enviar com a emenda</h3>
+        </div>
+
+        <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); padding:1.5rem; box-shadow:var(--shadow); margin-bottom:2rem;">
+          <ul style="list-style:none; padding:0; display:grid; gap:.75rem;">
+            <li style="display:flex; gap:.9rem; align-items:flex-start; padding:.6rem .75rem; border-radius:6px; background:var(--bg);">
+              <span style="color:var(--teal); font-weight:700; font-size:.95rem; flex-shrink:0;">01</span>
+              <div>
+                <strong style="font-size:.87rem;">Carta de solicitação de emenda</strong>
+                <p style="font-size:.78rem; color:var(--ink-soft); margin-top:.2rem;">Documento narrativo descrevendo a alteração proposta, sua justificativa científica ou operacional e o impacto esperado sobre os participantes e o protocolo. Deve ser assinada pelo pesquisador responsável.</p>
+              </div>
+            </li>
+            <li style="display:flex; gap:.9rem; align-items:flex-start; padding:.6rem .75rem; border-radius:6px; background:var(--bg);">
+              <span style="color:var(--teal); font-weight:700; font-size:.95rem; flex-shrink:0;">02</span>
+              <div>
+                <strong style="font-size:.87rem;">Páginas alteradas do projeto (versão com controle de alterações)</strong>
+                <p style="font-size:.78rem; color:var(--ink-soft); margin-top:.2rem;">Somente as seções modificadas, com as alterações destacadas em negrito, sublinhado ou na função "controle de alterações" do processador de texto.</p>
+              </div>
+            </li>
+            <li style="display:flex; gap:.9rem; align-items:flex-start; padding:.6rem .75rem; border-radius:6px; background:var(--bg);">
+              <span style="color:var(--teal); font-weight:700; font-size:.95rem; flex-shrink:0;">03</span>
+              <div>
+                <strong style="font-size:.87rem;">TCLE revisado (quando alterado)</strong>
+                <p style="font-size:.78rem; color:var(--ink-soft); margin-top:.2rem;">Nova versão do Termo de Consentimento Livre e Esclarecido, igualmente com controle de alterações em relação à versão aprovada. Identificado com nova data e versão.</p>
+              </div>
+            </li>
+            <li style="display:flex; gap:.9rem; align-items:flex-start; padding:.6rem .75rem; border-radius:6px; background:var(--bg);">
+              <span style="color:var(--teal); font-weight:700; font-size:.95rem; flex-shrink:0;">04</span>
+              <div>
+                <strong style="font-size:.87rem;">Currículo Lattes atualizado (quando houver mudança na equipe)</strong>
+                <p style="font-size:.78rem; color:var(--ink-soft); margin-top:.2rem;">Exigido para novos pesquisadores incluídos. Extraído da Plataforma Lattes (CNPq), não superior a 90 dias.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Passo a passo emenda -->
+        <div class="section-header" style="margin-bottom:1.25rem;">
+          <span class="section-tag">Passo a passo</span>
+          <h3 style="font-family:var(--serif); font-size:1.35rem; font-weight:400;">Como submeter a emenda pela Plataforma Brasil</h3>
+        </div>
+
+        <div class="reveal" style="background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--rule); overflow:hidden; box-shadow:var(--shadow); margin-bottom:2rem;">
+          <div class="step" style="border-bottom:1px solid var(--rule);">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">1</div>
+            <div>
+              <h4>Acesse o protocolo na Plataforma Brasil</h4>
+              <p>Faça login como pesquisador responsável, localize o protocolo aprovado e selecione a opção "Emenda" no menu de ações do projeto.</p>
+            </div>
+          </div>
+          <div class="step" style="border-bottom:1px solid var(--rule);">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">2</div>
+            <div>
+              <h4>Descreva a alteração no campo específico</h4>
+              <p>Preencha o campo "Descrição da emenda" com clareza e objetividade, indicando o que foi alterado, por que e qual o impacto da mudança sobre os participantes e o protocolo.</p>
+            </div>
+          </div>
+          <div class="step" style="border-bottom:1px solid var(--rule);">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">3</div>
+            <div>
+              <h4>Anexe os documentos revisados</h4>
+              <p>Faça upload da carta de solicitação, das páginas alteradas do projeto e, se aplicável, do TCLE revisado e dos currículos dos novos pesquisadores. Todos no formato PDF.</p>
+            </div>
+          </div>
+          <div class="step" style="border-bottom:none;">
+            <div class="step-num" style="border-color:var(--teal);color:var(--teal);">4</div>
+            <div>
+              <h4>Envie e aguarde a análise do CEP</h4>
+              <p>A emenda será analisada na próxima reunião ordinária. Nenhuma alteração descrita na emenda pode ser implementada antes da emissão do parecer de aprovação pelo CEP.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="background:#fffbf0; border:1px solid var(--gold-lt); border-radius:var(--radius); padding:1rem 1.25rem; font-size:.83rem; color:var(--ink); line-height:1.65;">
+          <strong>⚠ Importante:</strong> A implementação de qualquer alteração antes da aprovação da emenda pelo CEP constitui violação das normas éticas vigentes (Resolução CNS nº 466/2012 e nº 510/2016) e pode acarretar a suspensão ou cancelamento do protocolo.
+        </div>
+
+      </div>
+
     </section>
   </div>
 
@@ -2123,7 +2416,62 @@
 <footer style="justify-content: center; text-align: center;">
   <p>© 2026 CEP UNCISAL — Comitê de Ética em Pesquisa · Todos os direitos reservados.<br>
   Universidade Estadual de Ciências da Saúde de Alagoas · Registro SINEP nº 5011</p>
+  <a href="#" class="version-link" id="version-btn" style="margin-top:.5rem; display:inline-block;">v1.3.0</a>
 </footer>
+
+<!-- MODAL HISTÓRICO DE VERSÕES -->
+<div class="modal-overlay" id="version-modal" role="dialog" aria-modal="true" aria-label="Histórico de versões">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Histórico de versões</h3>
+      <button class="modal-close" id="modal-close-btn" aria-label="Fechar">×</button>
+    </div>
+
+    <div class="version-entry">
+      <div class="version-tag">v1.3.0</div>
+      <div class="version-date">Outubro de 2026</div>
+      <ul>
+        <li>Adicionados caminhos: Enviar Notificação (relatórios parcial e final) e Enviar Emenda</li>
+        <li>Prazo de resposta do pesquisador corrigido para 20 dias úteis (10 + prorrogação de 10)</li>
+        <li>Inclusão de histórico de versões no rodapé</li>
+      </ul>
+    </div>
+
+    <div class="version-entry">
+      <div class="version-tag">v1.2.0</div>
+      <div class="version-date">Outubro de 2026</div>
+      <ul>
+        <li>Seção "Sobre o CEP" com regimento interno, composição e credenciamentos</li>
+        <li>Manuais técnicos da Plataforma Brasil integrados por contexto de uso</li>
+        <li>Navegação por âncoras com ativação automática de aba</li>
+        <li>Otimização tipográfica: Lora (títulos) e Source Sans 3 (corpo)</li>
+      </ul>
+    </div>
+
+    <div class="version-entry">
+      <div class="version-tag">v1.1.0</div>
+      <div class="version-date">Outubro de 2026</div>
+      <ul>
+        <li>Reestruturação dos caminhos do pesquisador: Projeto de Pesquisa, Relato de Caso e Resposta ao Parecer</li>
+        <li>Seção "Participantes" com 8 direitos e Canal do Participante (WhatsApp clicável)</li>
+        <li>FAQ expansível com 6 perguntas frequentes</li>
+        <li>Dados institucionais reais: endereço, reuniões, WhatsApp e Instagram</li>
+      </ul>
+    </div>
+
+    <div class="version-entry">
+      <div class="version-tag">v1.0.0</div>
+      <div class="version-date">Outubro de 2026</div>
+      <ul>
+        <li>Lançamento inicial do site do CEP UNCISAL</li>
+        <li>Layout responsivo com abas Pesquisadores e Participantes</li>
+        <li>Barra social com ícones e tooltips</li>
+        <li>Seção de contato e FAQ básico</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
 
 <!-- SCRIPTS -->
 <script>
@@ -2228,6 +2576,19 @@
   if (window.location.hash) {
     setTimeout(() => navigateTo(window.location.hash), 200);
   }
+
+  // Modal de histórico de versões
+  const versionBtn  = document.getElementById('version-btn');
+  const versionModal = document.getElementById('version-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+
+  function openModal()  { versionModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeModal() { versionModal.classList.remove('open'); document.body.style.overflow = ''; }
+
+  versionBtn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+  modalCloseBtn.addEventListener('click', closeModal);
+  versionModal.addEventListener('click', e => { if (e.target === versionModal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
