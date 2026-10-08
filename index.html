@@ -988,7 +988,7 @@
   </div>
   <nav>
     <a href="#pesquisadores">Pesquisadores</a>
-    <a href="#participantes">Participantes</a>
+    <a href="#canal">Participantes <span style="font-size:.72em; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#b91c1c;">(DENÚNCIA)</span></a>
     <a href="#faq">FAQ</a>
     <a href="#sobre">Sobre o CEP</a>
     <a href="#contato">Contato</a>
@@ -1001,7 +1001,7 @@
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
   <a href="#pesquisadores" onclick="closeMobile()">Pesquisadores</a>
-  <a href="#participantes" onclick="closeMobile()">Participantes</a>
+  <a href="#canal" onclick="closeMobile()">Participantes <span style="font-size:.72em; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#b91c1c;">(DENÚNCIA)</span></a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#sobre" onclick="closeMobile()">Sobre o CEP</a>
   <a href="#contato" onclick="closeMobile()">Contato</a>
@@ -1960,11 +1960,11 @@
     </div>
 
     <!-- CANAL DE COMUNICAÇÃO COM O CEP -->
-    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--rule);">
+    <section class="section" id="canal" style="background: var(--bg-card); border-top: 1px solid var(--rule);">
       <div class="section-header reveal">
         <span class="section-tag">Canal do participante</span>
         <h2 class="section-title">Denúncias, reclamações e esclarecimentos</h2>
-        <p class="section-lead">O CEP da UNCISAL mantém canal exclusivo e independente para que participantes de pesquisa possam exercer seus direitos de forma direta, segura e confidencial — sem qualquer intermediação da equipe de pesquisa.</p>
+        <p class="section-lead">O CEP da UNCISAL mantém canal exclusivo e independente para que participantes de pesquisa possam exercer seus direitos de forma direta, segura e confidencial — sem qualquer intermediação da equipe de pesquisa. Escolha o canal de sua preferência.</p>
       </div>
 
       <div class="cards-grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(260px,1fr));">
@@ -1978,7 +1978,10 @@
           </div>
           <h3>Denúncia de irregularidade ética</h3>
           <p>Caso identifique que a pesquisa está sendo realizada em desacordo com o protocolo aprovado, que procedimentos não autorizados estão sendo aplicados, ou que seus direitos estão sendo violados, comunique imediatamente ao CEP. O sigilo do denunciante é assegurado.</p>
-          <a href="https://wa.me/5582987052777" target="_blank" class="card-link">Contatar o CEP →</a>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.75rem;">
+            <a href="https://wa.me/5582987052777" target="_blank" class="card-link" style="margin-top:0;">WhatsApp →</a>
+            <a href="mailto:cep@uncisal.edu.br" class="card-link" style="margin-top:0; border-color:var(--gold); color:var(--gold);">E-mail →</a>
+          </div>
         </div>
 
         <div class="card" style="border-left: 3px solid var(--teal);">
@@ -1989,7 +1992,10 @@
           </div>
           <h3>Reclamação sobre conduta da equipe</h3>
           <p>Se você se sentir pressionado, constrangido, mal informado ou tratado de forma inadequada pela equipe de pesquisa, registre sua reclamação diretamente ao CEP. O Comitê analisará o caso de forma independente e tomará as providências cabíveis.</p>
-          <a href="https://wa.me/5582987052777" target="_blank" class="card-link">Registrar reclamação →</a>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.75rem;">
+            <a href="https://wa.me/5582987052777" target="_blank" class="card-link" style="margin-top:0;">WhatsApp →</a>
+            <a href="mailto:cep@uncisal.edu.br" class="card-link" style="margin-top:0; border-color:var(--gold); color:var(--gold);">E-mail →</a>
+          </div>
         </div>
 
         <div class="card" style="border-left: 3px solid var(--gold);">
@@ -2001,7 +2007,10 @@
           </div>
           <h3>Esclarecimento de dúvidas</h3>
           <p>Você pode solicitar ao CEP esclarecimentos sobre qualquer aspecto da pesquisa em que está participando: sobre o TCLE, sobre procedimentos realizados, sobre seus direitos, sobre a destinação dos dados coletados ou sobre os resultados do estudo.</p>
-          <a href="https://wa.me/5582987052777" target="_blank" class="card-link">Solicitar esclarecimento →</a>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.75rem;">
+            <a href="https://wa.me/5582987052777" target="_blank" class="card-link" style="margin-top:0;">WhatsApp →</a>
+            <a href="mailto:cep@uncisal.edu.br" class="card-link" style="margin-top:0; border-color:var(--gold); color:var(--gold);">E-mail →</a>
+          </div>
         </div>
 
       </div>
@@ -2009,13 +2018,14 @@
       <!-- Destaque canal -->
       <div class="reveal" style="margin-top: 2rem; background: var(--teal); border-radius: var(--radius); padding: 2rem 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; flex-wrap: wrap;">
         <div>
-          <p style="font-size:.7rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:.5rem;">Canal oficial do participante</p>
-          <h3 style="font-family:var(--serif); font-size:1.5rem; font-weight:300; color:#fff; margin-bottom:.5rem;">CEP UNCISAL · WhatsApp</h3>
-          <p style="font-size:.875rem; color:rgba(255,255,255,.65); line-height:1.7;">Atendimento presencial de segunda a sexta, das 13h às 18h, no 3º andar do prédio sede. Comunicações pelo WhatsApp são respondidas em dias úteis. O sigilo é garantido em todos os casos.</p>
+          <p style="font-size:.7rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:.5rem;">Canais oficiais do participante</p>
+          <h3 style="font-family:var(--serif); font-size:1.5rem; font-weight:300; color:#fff; margin-bottom:.5rem;">CEP UNCISAL · WhatsApp ou E-mail</h3>
+          <p style="font-size:.875rem; color:rgba(255,255,255,.65); line-height:1.7;">Atendimento presencial de segunda a sexta, das 13h às 18h, no 3º andar do prédio sede. Mensagens pelo WhatsApp e e-mails são respondidos em dias úteis. O sigilo é garantido em todos os casos.</p>
         </div>
-        <div style="text-align:center; flex-shrink:0;">
+        <div style="text-align:center; flex-shrink:0; display:flex; flex-direction:column; gap:.6rem;">
           <p style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:#fff; white-space:nowrap;"><a href="https://wa.me/5582987052777" target="_blank" class="canal-num-link">(82) 98705-2777</a></p>
-          <a href="https://wa.me/5582987052777" target="_blank" class="btn btn-primary" style="margin-top:.75rem; font-size:.78rem;">Abrir WhatsApp</a>
+          <a href="https://wa.me/5582987052777" target="_blank" class="btn btn-primary" style="font-size:.78rem;">Abrir WhatsApp</a>
+          <a href="mailto:cep@uncisal.edu.br" class="btn" style="font-size:.78rem; background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.3);">Enviar E-mail</a>
         </div>
       </div>
     </section>
@@ -2630,6 +2640,7 @@
   const anchorTab = {
     pesquisadores: 'pesquisadores',
     participantes: 'participantes',
+    canal:         'participantes',
     faq:           null,
     sobre:         null,
     contato:       null
