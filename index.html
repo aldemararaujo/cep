@@ -85,7 +85,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      gap: 1rem;
+      min-height: 64px;
+      padding-block: .5rem;
       box-shadow: 0 1px 0 rgba(255,255,255,.08);
     }
 
@@ -109,6 +111,7 @@
     .logo-badge svg { width: 18px; height: 18px; }
 
     .logo-text {
+      display: block;
       font-family: var(--serif);
       font-size: 1.15rem;
       font-weight: 600;
@@ -142,6 +145,7 @@
 
     .hamburger {
       display: none;
+      flex-shrink: 0;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
@@ -802,6 +806,11 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      header > nav { display: none; }
+      .hamburger { display: flex; }
+    }
+
     @media (max-width: 768px) {
       nav { display: none; }
       .hamburger { display: flex; }
@@ -1026,7 +1035,7 @@
       </svg>
     </div>
     <div>
-      <span class="logo-text">CEP</span>
+      <span class="logo-text">Comitê de Ética em Pesquisa</span>
       <span class="logo-sub">CEP · UNCISAL · Maceió/AL</span>
     </div>
   </div>
@@ -2571,7 +2580,7 @@
 <footer style="justify-content: center; text-align: center;">
   <p>© 2026 CEP UNCISAL — Comitê de Ética em Pesquisa · Todos os direitos reservados.<br>
   Universidade Estadual de Ciências da Saúde de Alagoas · Registro SINEP nº 5011</p>
-  <a href="#" class="version-link" id="version-btn" style="margin-top:.5rem; display:inline-block;">v1.4.3</a>
+  <a href="#" class="version-link" id="version-btn" style="margin-top:.5rem; display:inline-block;">v1.4.4</a>
 </footer>
 
 <!-- MODAL HISTÓRICO DE VERSÕES -->
@@ -2580,6 +2589,14 @@
     <div class="modal-header">
       <h3>Histórico de versões</h3>
       <button class="modal-close" id="modal-close-btn" aria-label="Fechar">×</button>
+    </div>
+
+    <div class="version-entry">
+      <div class="version-tag">v1.4.4</div>
+      <div class="version-date">14/10/2026</div>
+      <ul>
+        <li>Primeira linha do cabeçalho alterada para “Comitê de Ética em Pesquisa”, com ajuste de espaço em telas menores.</li>
+      </ul>
     </div>
 
     <div class="version-entry">
