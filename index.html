@@ -37,6 +37,31 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── BARRA INSTITUCIONAL · v1.4.0 · 14/10/2026 ── */
+    .institutional-bar {
+      width: 100%;
+      background: #fff;
+      padding: 12px clamp(1rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .institutional-link {
+      display: block;
+      width: min(100%, 560px);
+      margin-inline: auto;
+    }
+
+    .institutional-link:focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 4px;
+    }
+
+    .institutional-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     /* ── HEADER ── */
     header {
       background: var(--teal);
@@ -123,8 +148,8 @@
 
     .mobile-nav {
       display: none;
-      position: fixed;
-      top: 64px;
+      position: absolute;
+      top: 100%;
       left: 0; right: 0;
       background: var(--teal);
       border-top: 1px solid rgba(255,255,255,.1);
@@ -972,6 +997,13 @@
 </head>
 <body>
 
+<!-- BARRA INSTITUCIONAL · v1.4.0 · 14/10/2026 -->
+<div class="institutional-bar">
+  <a class="institutional-link" href="https://www.uncisal.edu.br" target="_blank" rel="noopener noreferrer" aria-label="Visitar o site da UNCISAL (abre em nova aba)">
+    <img src="assets/uncisal.jpg" alt="UNCISAL — Universidade Estadual de Ciências da Saúde de Alagoas" width="1144" height="262" fetchpriority="high" />
+  </a>
+</div>
+
 <!-- HEADER -->
 <header>
   <div class="logo">
@@ -996,7 +1028,6 @@
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
-</header>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
@@ -1006,6 +1037,7 @@
   <a href="#sobre" onclick="closeMobile()">Sobre o CEP</a>
   <a href="#contato" onclick="closeMobile()">Contato</a>
 </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -2527,7 +2559,7 @@
 <footer style="justify-content: center; text-align: center;">
   <p>© 2026 CEP UNCISAL — Comitê de Ética em Pesquisa · Todos os direitos reservados.<br>
   Universidade Estadual de Ciências da Saúde de Alagoas · Registro SINEP nº 5011</p>
-  <a href="#" class="version-link" id="version-btn" style="margin-top:.5rem; display:inline-block;">v1.3.0</a>
+  <a href="#" class="version-link" id="version-btn" style="margin-top:.5rem; display:inline-block;">v1.4.0</a>
 </footer>
 
 <!-- MODAL HISTÓRICO DE VERSÕES -->
@@ -2536,6 +2568,15 @@
     <div class="modal-header">
       <h3>Histórico de versões</h3>
       <button class="modal-close" id="modal-close-btn" aria-label="Fechar">×</button>
+    </div>
+
+    <div class="version-entry">
+      <div class="version-tag">v1.4.0</div>
+      <div class="version-date">14/10/2026</div>
+      <ul>
+        <li>Barra institucional em toda a largura da página com a imagem da UNCISAL, adaptada a computadores e celulares.</li>
+        <li>Link na imagem para o site da UNCISAL, com abertura em nova aba.</li>
+      </ul>
     </div>
 
     <div class="version-entry">
